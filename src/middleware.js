@@ -1,12 +1,17 @@
-import { NextResponse } from 'next/server'
- 
+import { NextResponse } from "next/server";
+
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
-    console.log(request,'______hi_')
-  return NextResponse.redirect(new URL('/login', request.url))
+  const isLoggedIn = false; // Example condition for demonstration
+
+  if (!isLoggedIn) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  return NextResponse.next();
 }
- 
+
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: '/',
-}
+  matcher: "/",
+};
