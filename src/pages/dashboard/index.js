@@ -54,8 +54,8 @@ import {
 
 import { TooltipProvider } from "@radix-ui/react-tooltip"
 
-import Layout from "../Layout/layout"
-import Sidebar from "@/components/Sidebar"
+import Layout from "../layout/layout"
+import Sidebar from "@/components/sidebar"
 import { Input } from "@/components/ui/input"
 
 export default function Dashboard() {
