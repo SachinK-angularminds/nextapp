@@ -58,7 +58,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 
-import Layout from "../layout/layout";
+import Layout from "../Layout/layout";
 import Sidebar from "@/components/sidebar";
 import { Input } from "@/components/ui/input";
 
@@ -68,10 +68,10 @@ export default function Dashboard() {
       <Layout>
         <TooltipProvider>
           <div className="flex min-h-screen w-full flex-col bg-muted/40">
-            <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
+            <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex  mt-16">
               <Sidebar />
             </aside>
-            <div className="flex  sm:gap-4 sm:py- sm:pl-14">
+            <div className="flex  sm:gap-4 sm:py- sm:pl-14 mt-16">
               <div className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
                 <div>
                   <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background sm:static sm:h-auto sm:border-0 sm:bg-transparent ">
