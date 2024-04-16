@@ -1,12 +1,28 @@
 import Header from "@/components/Header";
-import Footer from "../../components/footer";
+import Sidebar from "@/components/Sidebar";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import Footer from "@/components/footer";
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div className="flex h-screen">
+      {/* Header */}
       <Header />
-      <div>{children}</div>
-      <Footer />
+
+      {/* Sidebar */}
+      <aside className="w-14 flex flex-col border-r bg-background">
+        <Sidebar />
+      </aside>
+
+      {/* Main content area */}
+      <main className="flex-1 overflow-y-auto">
+        <div className="px-2 py-16">
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+          </ThemeProvider>
+        </div>
+        <Footer />
+      </main>
     </div>
   );
 };

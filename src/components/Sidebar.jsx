@@ -1,25 +1,27 @@
 import {
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
-  } from "@/components/ui/tooltip"
-  import {
-    Home,
-    LineChart,   
-    Package,
-    Package2,
-    Settings,
-    ShoppingCart,
-    Users2,
-  } from "lucide-react"
-  import Link from "next/link"
-  
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { TooltipProvider } from "@radix-ui/react-tooltip";
+import {
+  Home,
+  LineChart,
+  Package,
+  Package2,
+  Settings,
+  ShoppingCart,
+  Users2,
+} from "lucide-react";
+import Link from "next/link";
+
 function Sidebar() {
   return (
     <>
-         <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
+      <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
+        <TooltipProvider>
           <Link
-            href="#"
+            href="/dashboard"
             className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
           >
             <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
@@ -28,7 +30,7 @@ function Sidebar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href="#"
+                href="/home"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Home className="h-5 w-5" />
@@ -40,10 +42,12 @@ function Sidebar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href="#"
+                href="/blogs"
                 className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
-                <ShoppingCart className="h-5 w-5" />
+                {/* <ShoppingCart className="h-5 w-5" />
+                 */}
+                Blogs
                 <span className="sr-only">Orders</span>
               </Link>
             </TooltipTrigger>
@@ -52,7 +56,7 @@ function Sidebar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href="#"
+                href="/jobs"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Package className="h-5 w-5" />
@@ -64,7 +68,7 @@ function Sidebar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href="#"
+                href="/categories"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Users2 className="h-5 w-5" />
@@ -76,7 +80,7 @@ function Sidebar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href="#"
+                href="/media"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <LineChart className="h-5 w-5" />
@@ -85,9 +89,10 @@ function Sidebar() {
             </TooltipTrigger>
             <TooltipContent side="right">Analytics</TooltipContent>
           </Tooltip>
-
-        </nav>
-        <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
+        </TooltipProvider>
+      </nav>
+      <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
+        <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
@@ -100,9 +105,10 @@ function Sidebar() {
             </TooltipTrigger>
             <TooltipContent side="right">Settings</TooltipContent>
           </Tooltip>
-        </nav>
+        </TooltipProvider>
+      </nav>
     </>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

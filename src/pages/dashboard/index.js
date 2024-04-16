@@ -59,18 +59,38 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 
 import Layout from "../Layout/layout";
-import Sidebar from "@/components/sidebar";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/router";
+import Blog from "../blogs";
+import Job from "../jobs";
+import Media from "../media";
+import Categorie from "../categories";
+import HomePage from "../home";
 
 export default function Dashboard() {
+  const router = useRouter();
+
+  const renderPage = () => {
+    switch (router.pathname) {
+      case "/home":
+        return <HomePage />;
+      case "/blogs":
+        return <Blog />;
+      case "/jobs":
+        return <Job />;
+      case "/media":
+        return <Media />;
+      case "/categories":
+        return <Categorie />;
+      default:
+        return <HomePage />;
+    }
+  };
   return (
     <>
       <Layout>
         <TooltipProvider>
           <div className="flex min-h-screen w-full flex-col bg-muted/40">
-            <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex  mt-16">
-              <Sidebar />
-            </aside>
             <div className="flex  sm:gap-4 sm:py- sm:pl-14 mt-16">
               <div className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
                 <div>
@@ -161,7 +181,7 @@ export default function Dashboard() {
                             className="overflow-hidden rounded-full"
                           >
                             <Image
-                              src="/placeholder-user.jpg"
+                              src=""
                               width={36}
                               height={36}
                               alt="Avatar"
@@ -184,7 +204,9 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-              <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
+              home
+              {renderPage()}
+              {/* <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
                 <Tabs defaultValue="all">
                   <div className="flex items-center">
                     <TabsList>
@@ -583,7 +605,7 @@ export default function Dashboard() {
                     </Card>
                   </TabsContent>
                 </Tabs>
-              </main>
+              </main> */}
             </div>
           </div>
         </TooltipProvider>

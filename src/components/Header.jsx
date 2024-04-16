@@ -31,12 +31,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ModeToggle } from "./ModeToggle";
+import { useTheme } from "next-themes";
 
 export default function Header() {
+  const { theme } = useTheme();
+
   return (
     <div className="grid w-full fixed z-20 h-14">
       <div className="flex flex-col">
         <header className="flex h-14 items-center gap-4 border-b bg-background px-2 lg:h-[60px] lg:px-2">
+          {/* for smaller screen Appy same feature in sidebar */}
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -116,19 +121,21 @@ export default function Header() {
           </Sheet>
           <div className="w-full flex-1">
             <form>
-              {/* <div className="relative">
-                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input
-                  type="search"
-                  placeholder="Search products..."
-                  className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
-                />
-              </div> */}
               <div className="relative">
-                <img src="/logos/logo-light-full.svg" className="w-60" />
+                {/* <img src="/logos/logo-light-full.svg" className="w-60" /> */}
+                <img
+                  src={
+                    theme === "light"
+                      ? "/logos/logo-light-full.svg"
+                      : "/logos/logo-dark-full.svg"
+                  }
+                  className="w-60"
+                />
               </div>
             </form>
           </div>
+          <ModeToggle />
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
