@@ -70,23 +70,23 @@ import HomePage from "../home";
 export default function Dashboard() {
   const router = useRouter();
 
-  const renderPage = () => {
-    switch (router.pathname) {
-      case "/home":
-        return <HomePage />;
-      case "/blogs":
-        return <Blog />;
-      case "/jobs":
-        return <Job />;
-      case "/media":
-        return <Media />;
-      case "/categories":
-        return <Categorie />;
-      default:
-        return <HomePage />;
-    }
-  };
-  return (
+  // const renderPage = () => {
+  //   switch (router.pathname) {
+  //     case "/home":
+  //       return <HomePage />;
+  //     case "/blogs":
+  //       return <Blog />;
+  //     case "/jobs":
+  //       return <Job />;
+  //     case "/media":
+  //       return <Media />;
+  //     case "/categories":
+  //       return <Categorie />;
+  //     default:
+  //       return <HomePage />;
+  //   }
+  // };
+   return (
     <>
       <Layout>
         <TooltipProvider>
@@ -205,8 +205,8 @@ export default function Dashboard() {
             </div>
             <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
               home
-              {renderPage()}
-              {/* <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
+              {/* {renderPage()} */}
+              <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
                 <Tabs defaultValue="all">
                   <div className="flex items-center">
                     <TabsList>
@@ -605,7 +605,7 @@ export default function Dashboard() {
                     </Card>
                   </TabsContent>
                 </Tabs>
-              </main> */}
+              </main>
             </div>
           </div>
         </TooltipProvider>

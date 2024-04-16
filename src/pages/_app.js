@@ -1,6 +1,7 @@
 import RootLayout from "@/app/layout";
 
 function MyApp({ Component, pageProps }) {
+  console.log('root')
   return (
     <RootLayout>
       <Component {...pageProps} />
