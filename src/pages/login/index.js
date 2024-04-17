@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import "../../app/./globals.css";
 import { Button } from "@/components/ui/button";
@@ -10,8 +11,27 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function LoginForm() {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('inside submit')
+    // Perform your login validation here.
+    if (email === 'test@example.com' && password === 'password') {
+      console.log('successful')
+      // Navigate to the dashboard if the email and password are correct.
+      router.push('/dashboard');
+    } else {
+      setError('Invalid email or password');
+    }
+  };
   return (
     <div className="flex justify-center items-center h-screen">
       <Card className="m-auto max-w-sm ">
@@ -22,6 +42,7 @@ export default function LoginForm() {
           </CardDescription>
         </CardHeader>
         <CardContent>
+        <form onSubmit={handleSubmit}>
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
@@ -30,6 +51,8 @@ export default function LoginForm() {
                 type="email"
                 placeholder="m@example.com"
                 required
+                value={email}
+                  onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="grid gap-2">
@@ -42,7 +65,8 @@ export default function LoginForm() {
                   Forgot your password?
                 </Link>
               </div>
-              <Input id="password" type="password" required />
+              <Input id="password" type="password" required  value={password}
+                  onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <Button type="submit" className="w-full">
               Login
@@ -51,12 +75,14 @@ export default function LoginForm() {
               Login with Google
             </Button>
           </div>
-          <div className="mt-4 text-center text-sm">
+          </form>
+
+          {/* <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
             <Link href="#" className="underline">
               Sign up
             </Link>
-          </div>
+          </div> */}
         </CardContent>
       </Card>
     </div>
