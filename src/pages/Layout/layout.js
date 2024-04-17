@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
 
       {/* Main content area */}
       <main className="flex-1 overflow-y-auto">
-        <div className="px-2 py-16">
+        <div className="">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
           </ThemeProvider>
