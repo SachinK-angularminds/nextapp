@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import "../app/globals.css";
 import {
@@ -40,7 +40,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet";
 import { ModeToggle } from "./ModeToggle";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
@@ -48,26 +48,24 @@ import { useState } from "react";
 import { Label } from "@radix-ui/react-label";
 
 export default function Header() {
-const [sliderOpen,setSliderOpen]=useState(false)
+  const [sliderOpen, setSliderOpen] = useState(false);
 
   const { theme } = useTheme();
   const router = useRouter();
 
+  function handleLogout(e) {
+    e.preventDefault();
+    router.push("/login");
+  }
 
-function handleLogout(e){
-  e.preventDefault()
-  router.push('/login');
-}
-
-
-function handleSetting(){
-  setSliderOpen(!sliderOpen); // Toggle sliderOpen state
-}
-console.log(sliderOpen)
+  function handleSetting() {
+    setSliderOpen(!sliderOpen); // Toggle sliderOpen state
+  }
+  console.log(sliderOpen);
   return (
     <div className="grid w-full fixed z-20 h-14">
       <div className="flex flex-col">
-        <header className="flex h-14 i158tems-center gap-4 border-b bg-background px-2 lg:h-[60px] lg:px-2">
+        <header className="flex h-14 items-center gap-4 border-b bg-background px-2 lg:h-[60px] lg:px-2">
           {/* for smaller screen Appy same feature in sidebar */}
           <Sheet>
             <SheetTrigger asChild>
@@ -173,43 +171,56 @@ console.log(sliderOpen)
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => setSliderOpen(!sliderOpen)}>Settings</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setSliderOpen(!sliderOpen)}>
+                Settings
+              </DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={(e)=>handleLogout(e)}>Logout</DropdownMenuItem>
+              <DropdownMenuItem onClick={(e) => handleLogout(e)}>
+                Logout
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
           {sliderOpen && (
-           <Sheet>           
-           <SheetContent side="left">
-             <SheetHeader>
-               <SheetTitle>Edit profile</SheetTitle>
-               <SheetDescription>
-                 Make changes to your profile here. Click save when you're done.
-               </SheetDescription>
-             </SheetHeader>
-             <div className="grid gap-4 py-4">
-               <div className="grid grid-cols-4 items-center gap-4">
-                 <Label htmlFor="name" className="text-right">
-                   Name
-                 </Label>
-                 <Input id="name" value="Pedro Duarte" className="col-span-3" />
-               </div>
-               <div className="grid grid-cols-4 items-center gap-4">
-                 <Label htmlFor="username" className="text-right">
-                   Username
-                 </Label>
-                 <Input id="username" value="@peduarte" className="col-span-3" />
-               </div>
-             </div>
-             <SheetFooter>
-               <SheetClose asChild>
-                 <Button type="submit">Save changes</Button>
-               </SheetClose>
-             </SheetFooter>
-           </SheetContent>
-         </Sheet>
+            <Sheet>
+              <SheetContent side="left">
+                <SheetHeader>
+                  <SheetTitle>Edit profile</SheetTitle>
+                  <SheetDescription>
+                    Make changes to your profile here. Click save when you're
+                    done.
+                  </SheetDescription>
+                </SheetHeader>
+                <div className="grid gap-4 py-4">
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="name" className="text-right">
+                      Name
+                    </Label>
+                    <Input
+                      id="name"
+                      value="Pedro Duarte"
+                      className="col-span-3"
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="username" className="text-right">
+                      Username
+                    </Label>
+                    <Input
+                      id="username"
+                      value="@peduarte"
+                      className="col-span-3"
+                    />
+                  </div>
+                </div>
+                <SheetFooter>
+                  <SheetClose asChild>
+                    <Button type="submit">Save changes</Button>
+                  </SheetClose>
+                </SheetFooter>
+              </SheetContent>
+            </Sheet>
           )}
         </header>
       </div>
